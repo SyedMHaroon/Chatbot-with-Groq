@@ -128,17 +128,6 @@ async def run_research(req: ResearchRequest):
         raise HTTPException(status_code=500, detail=f"Failed to parse agent output: {e}. Raw output saved for debugging.")
 
     # structured is now guaranteed to exist
-    reply_text = f"{structured.summary}\n\nSources:\n" + "\n".join(f"- {s}" for s in structured.sources)
 
     return ResearchResponse(**structured.dict())
 
-'''
-query = input("What is can i help you research about?")
-raw_response = agent_executor.invoke({"query": query})
-
-try:
-    structured_response = parser.parse(raw_response.get("output"))
-    print(structured_response.topic)
-except Exception as e:
-    print("Error parsing response", e, "Raw response -->", raw_response)
-    '''

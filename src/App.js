@@ -1,11 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 
-// ChatMessage type definition (remove if using TypeScript)
-// type ChatMessage = {
-//   id: string;
-//   role: "user" | "assistant" | "system";
-//   content: string;
-// };
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
 
@@ -99,7 +93,7 @@ export default function ReactChatbot() {
     <div className="max-w-3xl mx-auto p-4 h-screen flex flex-col">
       <header className="mb-4">
         <h1 className="text-2xl font-bold">FastAPI Chatbot UI</h1>
-        <p className="text-sm text-gray-500">Sends your message to <code>{API_URL}/research</code></p>
+        <p className="text-sm text-gray-500">FastAPI + React</p>
       </header>
 
       <div className="flex-1 overflow-hidden rounded-lg border bg-white shadow-sm flex flex-col">
@@ -127,7 +121,7 @@ export default function ReactChatbot() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Type your question here. Press Enter to send, Shift+Enter for newline."
+              placeholder="Type the topic for search."
               rows={2}
               className="flex-1 resize-none rounded-md border p-3 focus:outline-none focus:ring"
             />
@@ -145,7 +139,6 @@ export default function ReactChatbot() {
 
           {error && <div className="mt-2 text-sm text-red-600">Error: {error}</div>}
 
-          <div className="mt-3 text-xs text-gray-500">Tip: If your backend requires auth, add credentials or tokens to the fetch call.</div>
         </div>
       </div>
 
