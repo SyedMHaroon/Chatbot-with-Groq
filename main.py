@@ -1,18 +1,19 @@
-from fastapi import FastAPI, HTTPException, BackgroundTasks
+import logging 
+#fastapi
+from fastapi import FastAPI, HTTPException
 from fastapi.concurrency import run_in_threadpool
-import logging  
 from fastapi.middleware.cors import CORSMiddleware
-
-
+#dotenv 
 from dotenv import load_dotenv
+#pydantic
 from pydantic import BaseModel
+#langchain
 from langchain_groq import ChatGroq
-from typing import Dict,List
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import PydanticOutputParser
 from langchain.agents import create_tool_calling_agent, AgentExecutor
-from tools import search_tool, wiki_tool #save_tool
-
+#tools
+from tools import search_tool, wiki_tool 
 
 load_dotenv()
 logger = logging.getLogger("uvicorn.error")
